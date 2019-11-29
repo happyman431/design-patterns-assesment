@@ -2,15 +2,13 @@
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
-using GreatQuotes.ViewModels;
-using System.Collections.ObjectModel;
+using GreatQuotes.Data;
 
-namespace GreatQuotes.Droid {
+namespace GreatQuotes.Droid
+{
     [Activity(Label = "@string/app_name", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -21,13 +19,13 @@ namespace GreatQuotes.Droid {
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            var quoteLoader = new QuoteLoader();
-            GreatQuotesViewModel = new MainViewModel(() => quoteLoader.Save(GreatQuotesViewModel.Quotes)) {
-                Quotes = new ObservableCollection<GreatQuoteViewModel>(quoteLoader.Load())
+            QuoteLoaderFactory.Create = () =>
+            {
+                QuoteLoader quoteLoader = new QuoteLoader();
+                return quoteLoader;
             };
 
-            var app = new App(GreatQuotesViewModel);
-            LoadApplication(app);
+            LoadApplication(new App());
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

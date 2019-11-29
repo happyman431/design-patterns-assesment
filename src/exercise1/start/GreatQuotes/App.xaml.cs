@@ -17,6 +17,10 @@ namespace GreatQuotes
             MainPage = new NavigationPage (new QuoteListPage());
         }
 
+        public App()
+        {
+        }
+
         protected override void OnStart()
         {
             // Handle when your app starts

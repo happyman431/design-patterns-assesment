@@ -1,12 +1,11 @@
-﻿using GreatQuotes.Data;
-using System;
-using System.Collections.ObjectModel;
-using static GreatQuotes.Data.GreatQuote;
+﻿using System.Collections.ObjectModel;
+using GreatQuotes.Data;
 
 namespace GreatQuotes.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+
         private readonly QuoteManager quoteManager;
 
         public MainViewModel()
@@ -23,20 +22,8 @@ namespace GreatQuotes.ViewModels
         {
             quoteManager.Save();
         }
-
-        public void SayQuotes(GreatQuoteViewModel quote)
-        {
-            quoteManager.SayQuote(quote);
-        }
     }
 }
-    
 
 
 
-
-
-
-
-
-        

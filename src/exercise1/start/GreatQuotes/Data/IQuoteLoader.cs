@@ -1,5 +1,5 @@
-﻿using GreatQuotes.ViewModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GreatQuotes.ViewModels;
 
 namespace GreatQuotes.Data
 {

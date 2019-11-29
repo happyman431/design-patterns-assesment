@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Collections.ObjectModel;
 using GreatQuotes.ViewModels;
 
@@ -8,6 +7,7 @@ namespace GreatQuotes.Data
 {
     public class QuoteManager
     {
+
         static readonly Lazy<QuoteManager> instance = new Lazy<QuoteManager>(() => new QuoteManager());
 
         private IQuoteLoader loader;
@@ -26,9 +26,5 @@ namespace GreatQuotes.Data
         {
             loader.Save(Quotes);
         }
-
-        internal void SayQuote(GreatQuoteViewModel quote)
-        {
-            throw new NotImplementedException();
-        }
-    } 
+    }
+}
